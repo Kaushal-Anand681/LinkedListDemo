@@ -3,7 +3,7 @@ package AlgoExpert;
 public class ThreeLargestNumber {
 
 	public static void main(String[] args) {
-		int[] arr = { 141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7 };
+		int[] arr = { 141, 1, 17, -8, -17, -27, 18, 541, 8, 7, 7 };
 		int[] largestArr = { Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE };
 		for (int num : arr) {
 			update(largestArr,num);
