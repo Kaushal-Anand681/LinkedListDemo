@@ -90,4 +90,95 @@ public class LinkedList {
 		}
 	}
 
+	public void addAtFirstIndex(int data) {
+		Node node = new Node();
+		node.data = data;
+		node.next = null;
+		if(isEmpty()) {
+			head = tail = node;
+			size++;
+		}
+		else {
+			node.next = head;
+			head = node;
+			size++;
+		}
+		
+	}
+	
+	public void addAtIndex(int data,int index) throws Exception {
+		if(isEmpty()) {
+			throw new Exception("List is Empty");
+		}
+		if(index < 0 || index > size) {
+			throw new Exception("Invalid Index");
+		}
+		if(isEmpty()) {
+			addAtFirstIndex(data);
+		}
+		if(index == size) {
+			addAtLastIndex(data);
+		}
+		Node node = new Node();
+		node.data = data;
+		node.next = null;
+		size++;
+		Node previous = getNodeAt(index - 1);
+		Node temp = previous.next;
+		previous.next = node;
+		node.next = temp;
+	}
+
+	public void removeLastElement() throws Exception {
+		if(isEmpty()) {
+			throw new Exception("List is Empty");
+		}
+		if(size == 1) {
+			head = tail = null;
+			size--;
+		}
+		tail = getNodeAt(size - 2);
+		tail.next = null;
+		size--;
+	}
+	public void removeFirstElement() throws Exception {
+		if(isEmpty()) {
+			throw new Exception("List is Empty");
+		}
+		if(size == 1) {
+			head = tail = null;
+			size--;
+		}
+		head = head.next;
+		size--;
+		
+	}
+	
+	public void removeAtIndex(int index) throws Exception {
+		if(isEmpty()) {
+			throw new Exception("List is Empty");
+		}
+		if(index < 0 || index > size) {
+			throw new Exception("Invalid Index");
+		}
+		if(index == 0) {
+			removeFirstElement();
+		}
+		if(index == size - 1) {
+			removeLastElement();
+		}
+		else {
+			Node previous = getNodeAt(index - 1);
+			Node nextnode = getNodeAt(index + 1);
+			previous.next = nextnode;
+			size--;
+		}
+		
+	}
 }
+
+
+
+
+
+
